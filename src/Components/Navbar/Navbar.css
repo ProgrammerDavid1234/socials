@@ -1,7 +1,8 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -9,25 +10,30 @@ body{
     padding: 10px 20px;
     background-color: #f8f9fa; /* Light background color */
     border-bottom: 1px solid #dee2e6; /* Border at the bottom */
-  }
-  
-  .logo img {
+    position: fixed; /* Make the navbar fixed */
+    width: 100%; /* Ensure the navbar spans the full width */
+    top: 0; /* Position it at the top */
+    z-index: 1000; /* Ensure it stays above other content */
+    transition: padding 0.3s ease; /* Smooth transition for padding changes */
+}
+
+.logo img {
     height: 40px; /* Adjust as needed */
-  }
-  
-  .right {
+}
+
+.right {
     display: flex;
     align-items: center; /* Align items vertically in the center */
     margin-left: auto; /* Push the right container to the far right */
-  }
-  
-  .right p {
+}
+
+.right p {
     margin: 0;
     margin-right: 20px;
     font-size: 14px;
-  }
-  
-  .right h3 {
+}
+
+.right h3 {
     margin: 0;
     font-size: 16px;
     cursor: pointer;
@@ -38,26 +44,83 @@ body{
     color: black; /* Text color */
     transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
     text-align: center; /* Center the text inside the button */
-  }
-  
-  .right h3:hover {
+}
+
+.right h3:hover {
     background-color: #f0f0f0; /* Change background on hover */
     color: #000000; /* Change text color on hover */
-  }
-  
-  .right h3:active {
-    background-color: #e0e0e0;
-  }
-
-  
-  
-  hr {
-    border: none;
-    border-top: 1px solid #dee2e6; 
-    margin: 0; 
-  }
-
-  @media (max-width: 900px) {
-    
 }
-  
+
+.right h3:active {
+    background-color: #e0e0e0; /* Change background on click */
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #dee2e6;
+    margin: 0;
+}
+
+@media (max-width: 1200px) {
+    .navbar {
+        padding: 10px 15px; /* Adjust padding for medium screens */
+    }
+
+    .logo img {
+        height: 35px; /* Slightly adjust logo size */
+    }
+
+    .right h3 {
+        font-size: 15px; /* Adjust font size */
+    }
+}
+
+@media (max-width: 900px) {
+
+
+    .logo img {
+        height: 50%; /* Adjust logo size */
+    }
+
+
+
+    .right p {
+        display: none; /* Hide the text on smaller screens */
+    }
+
+    .right h3 {
+        padding: 8px 12px; /* Adjust padding */
+        font-size: 14px; /* Adjust font size */
+        text-align: center; /* Center text inside the button */
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 10px 5px; /* Further reduce padding */
+    }
+
+    .logo img {
+        height: 25px; /* Further adjust logo size */
+    }
+
+    .right h3 {
+        padding: 6px 10px; /* Further adjust padding */
+        font-size: 12px; /* Further adjust font size */
+    }
+}
+
+@media (max-width: 400px) {
+    .navbar {
+        padding: 8px 5px; /* Minimized padding for very small screens */
+    }
+
+    .logo img {
+        height: 20px; /* Minimize logo size */
+    }
+
+    .right h3 {
+        padding: 5px 8px; /* Minimized padding */
+        font-size: 10px; /* Minimized font size */
+    }
+}
