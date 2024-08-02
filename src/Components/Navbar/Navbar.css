@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa; /* Light background color */
+    border-bottom: 1px solid #dee2e6; /* Border at the bottom */
+  }
+  
+  .logo img {
+    height: 40px; /* Adjust as needed */
+  }
+  
+  .right {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    margin-left: auto; /* Push the right container to the far right */
+  }
+  
+  .right p {
+    margin: 0;
+    margin-right: 20px;
+    font-size: 14px;
+  }
+  
+  .right h3 {
+    margin: 0;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 5px; /* Rounded corners for button-like appearance */
+    padding: 10px 15px; /* Add padding to increase clickable area */
+    background-color: #ffffff; /* Background color for the button */
+    color: black; /* Text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    text-align: center; /* Center the text inside the button */
+  }
+  
+  .right h3:hover {
+    background-color: #f0f0f0; /* Change background on hover */
+    color: #000000; /* Change text color on hover */
+  }
+  
+  .right h3:active {
+    background-color: #e0e0e0;
+  }
+
+  
+  
+  hr {
+    border: none;
+    border-top: 1px solid #dee2e6; 
+    margin: 0; 
+  }
+
+  @media (max-width: 900px) {
+    
+}
+  

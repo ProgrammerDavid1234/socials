@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;900&family=Open+Sans:wght@700&family=Roboto:wght@300;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* General container */
+.general {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Image container */
+.imgSpace {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align image to the right */
+    overflow: hidden;
+}
+
+.LoginImg {
+    height: 100vh; /* Ensure image covers the height of the viewport */
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+    width: 100%; /* Maintain aspect ratio */
+}
+
+/* Text container */
+.inputField {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.inputField h4 {
+    font-size: 3rem;
+    color: #000000;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.inputField p {
+    font-size: 1rem; /* Fixed the missing unit */
+    color: #6C757D;
+    line-height: 1.5;
+}
+
+.signupButton {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center align the buttons horizontally */
+}
+
+.signupButton h5 {
+    margin: 10px 0; /* Space between stacked buttons */
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 40px; /* Rounded corners for button-like appearance */
+    padding: 12px 30px; /* Adjust padding to increase button height */
+    background-color: #ffffff; /* Background color for the button */
+    color: black; /* Text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    text-align: center; /* Center the text inside the button */
+    width: 400px; /* Increased width for all buttons */
+}
+
+.signupButton h5:hover {
+    background-color: #f0f0f0; /* Change background on hover */
+    color: #000000; /* Change text color on hover */
+}
+
+.signupButton h5:active {
+    background-color: #e0e0e0; /* Change background on click */
+}
+
+.divide {
+    max-width: 100%;
+    width: 20%;
+}
+
+@media (max-width: 900px) {
+    /* Styles for screens 900px or narrower */
+    .general {
+        flex-direction: column; /* Stack image and text containers vertically */
+    }
+
+    .imgSpace {
+        display: none; /* Hide image on small screens */
+    }
+
+    .inputField {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .inputField h4 {
+        font-size: 2rem; /* Reduce font size for smaller screens */
+    }
+
+    .inputField p {
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+    }
+
+    .signupButton h5 {
+        width: 80%; /* Adjust width to fit smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
+        padding: 12px; /* Adjust padding for better fit */
+    }
+}
+
+@media (max-width: 600px) {
+    /* Additional styles for screens 600px or narrower */
+    .inputField {
+        padding: 5px; /* Further adjust padding for very small screens */
+    }
+
+    .inputField h4 {
+        font-size: 1.5rem; /* Further reduce font size */
+    }
+
+    .inputField p {
+        font-size: 0.8rem; /* Further reduce font size */
+    }
+
+    .signupButton h5 {
+        width: 90%; /* Increase width to nearly full screen width */
+        font-size: 12px; /* Further reduce font size */
+        padding: 10px; /* Further adjust padding */
+    }
+}
