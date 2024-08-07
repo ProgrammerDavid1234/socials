@@ -211,4 +211,11 @@
   .tooltip {
     display: none;
   }
+  .rightText{
+    display: none;
+  }
+  .rightText1{
+    text-align: center;
+    font-weight: 400;
+  }
 }

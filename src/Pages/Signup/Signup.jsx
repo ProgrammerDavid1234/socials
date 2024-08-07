@@ -54,12 +54,12 @@ const Signup = () => {
             />
             <span className="tooltip">We will use your email as your user ID.</span>
           </div>
-          
+
           <label htmlFor="phone">Phone</label>
           <input type="number" id="phone" name="phone" />
-          
+
           <p>We strongly recommend adding a phone number. This will help verify your account and keep it safe.</p>
-          
+
           <label htmlFor="password">Password</label>
           <div className="password-container">
             <input
@@ -73,7 +73,7 @@ const Signup = () => {
               {showPassword ? <FaEyeSlash /> : <FaEye />} {showPassword ? 'Hide' : 'Show'}
             </button>
           </div>
-          
+
           <div className="requirements">
             <label>
               <input type="checkbox" checked={hasEightChars} readOnly /> Use 8 or more characters
@@ -90,6 +90,10 @@ const Signup = () => {
           </div>
           <div className="signupButton">
             <h5>Sign up</h5>
+          </div>
+          <div className="rightText1">
+            <p>Already have an account? Log in</p>
+            <p>Forget your user ID or password?</p>
           </div>
         </div>
       </div>
