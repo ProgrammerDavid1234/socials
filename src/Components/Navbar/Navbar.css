@@ -79,7 +79,8 @@ hr {
 
 @media (max-width: 900px) {
     .logo img {
-        height: 30px; /* Adjust logo size */
+        height: 30px; /* Reduce logo size */
+        width: auto; /* Maintain aspect ratio */
     }
 
     .right p {
@@ -99,7 +100,8 @@ hr {
     }
 
     .logo img {
-        height: 25px; /* Further adjust logo size */
+        height: 25px; /* Further reduce logo size */
+        width: auto; /* Maintain aspect ratio */
     }
 
     .right h3 {
@@ -115,6 +117,7 @@ hr {
 
     .logo img {
         height: 20px; /* Minimize logo size */
+        width: auto; /* Maintain aspect ratio */
     }
 
     .right h3 {

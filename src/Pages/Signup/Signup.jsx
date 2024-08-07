@@ -33,7 +33,7 @@ const Signup = () => {
         <p>Already have an account? Log in</p>
         <p>Forget your user ID or password?</p>
       </div>
-      <div className="logo">
+      <div className="logo1">
         <img src={logo} alt="Logo" />
       </div>
       <div className="container">
