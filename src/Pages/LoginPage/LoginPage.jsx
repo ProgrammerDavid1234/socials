@@ -40,6 +40,7 @@ const LoginPage = () => {
                 <p>Dont have an account? <span className="login-link" onClick={handleSignUpClick}>Sign Up</span></p>
             </div>
             <div className="logo1">
+                
                 <img src={logo} alt="Logo" />
             </div>
             <div className="container">

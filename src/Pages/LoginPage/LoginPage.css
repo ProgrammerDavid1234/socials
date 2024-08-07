@@ -234,7 +234,7 @@
   
     .logo1 img {
       max-width: 100%;
-      width: 50%;
+      width: 70%;
       height: auto; /* Adjust image size for mobile view */
       display: grid;
       place-items: center;
