@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Signup.css';
 import logo from '../../Components/Assets/Logo.jpg';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const navigate = useNavigate(); // Initialize the useNavigate hook
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -14,6 +16,9 @@ const Signup = () => {
 
   const togglePasswordVisibility = () => {
     setShowPassword(prevShowPassword => !prevShowPassword);
+  };
+  const handleSignUpClick = () => {
+    navigate('/loginpage'); // Navigate to the Signup page
   };
 
   const validatePassword = (password) => {
@@ -29,8 +34,8 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
-      <div className="rightText">
-        <p>Already have an account? Log in</p>
+    <div className="rightText">
+        <p>Already have an account? <span className="login-link" onClick={handleSignUpClick}>Login</span></p>
         <p>Forget your user ID or password?</p>
       </div>
       <div className="logo1">

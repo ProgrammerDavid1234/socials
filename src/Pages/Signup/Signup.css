@@ -175,12 +175,40 @@
   white-space: nowrap;
   z-index: 10;
 }
+.rightText {
+  text-align: right;
+  padding: 1% 2%;
+}
+
+.rightText p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.login-link {
+  color: #000000; /* Blue color for the link */
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px; /* Space between text and link */
+}
+
+.login-link:hover {
+  color: #0056b3; /* Darker blue for hover effect */
+}
+
+.login-link:active {
+  color: #004085; /* Even darker blue for active effect */
+}
+
 
 .input-container:hover .tooltip {
   visibility: visible;
   opacity: 1;
 }
-
+.rightText1{
+  display: none;
+}
 /* Mobile View Styles */
 @media (max-width: 768px) {
   .container {
@@ -212,8 +240,8 @@
     display: none;
   }
   .rightText{
-    display: none;
-  }
+padding: 1% 2%; 
+ }
   .rightText1{
     text-align: center;
     font-weight: 400;
