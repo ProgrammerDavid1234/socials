@@ -10,7 +10,7 @@ const Navbar = () => {
         </div>
         <div className="right">
             <p>English (United States)</p>
-            <h3>Login</h3>
+            <h3 style={{fontWeight:'400'}}>Login</h3>
         </div>
         <hr />
     </nav>

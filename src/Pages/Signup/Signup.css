@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.signup-container {
+  max-width: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.rightText {
+  text-align: right;
+  padding: 1% 2%;
+}
+
+.logo {
+  max-width: 100%;
+  display: grid;
+  place-items: center;
+  padding-top: 1%;
+}
+
+.signupButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.signupButton h5 {
+  margin: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 40px;
+  padding: 12px 30px;
+  background-color: #ffffff;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+  max-width: 100%;
+}
+
+.signupButton h5:hover {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+.signupButton h5:active {
+  background-color: #e0e0e0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.container .text h3 {
+  text-align: center;
+  font-size: 50px;
+}
+
+.container .text p {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input label {
+  margin-bottom: 5px;
+}
+
+.input input[type="email"],
+.input input[type="number"],
+.input input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.password-container button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.requirements {
+  margin-top: 20px;
+}
+
+.requirements label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.requirements input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.requirements p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container label {
+  padding-bottom: 30px;
+}
+
+.tooltip {
+  position: absolute;
+  right: -220px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.input-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+@media (max-width:768px) {
+  
+}

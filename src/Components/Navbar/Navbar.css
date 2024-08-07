@@ -7,7 +7,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 20px; /* Padding for overall height */
     background-color: #f8f9fa; /* Light background color */
     border-bottom: 1px solid #dee2e6; /* Border at the bottom */
     position: fixed; /* Make the navbar fixed */
@@ -15,6 +15,7 @@ body {
     top: 0; /* Position it at the top */
     z-index: 1000; /* Ensure it stays above other content */
     transition: padding 0.3s ease; /* Smooth transition for padding changes */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .logo img {
@@ -64,7 +65,7 @@ hr {
 
 @media (max-width: 1200px) {
     .navbar {
-        padding: 10px 15px; /* Adjust padding for medium screens */
+        padding: 8px 15px; /* Adjust padding for medium screens */
     }
 
     .logo img {
@@ -77,13 +78,9 @@ hr {
 }
 
 @media (max-width: 900px) {
-
-
     .logo img {
-        height: 50%; /* Adjust logo size */
+        height: 30px; /* Adjust logo size */
     }
-
-
 
     .right p {
         display: none; /* Hide the text on smaller screens */
@@ -98,7 +95,7 @@ hr {
 
 @media (max-width: 600px) {
     .navbar {
-        padding: 10px 5px; /* Further reduce padding */
+        padding: 8px 10px; /* Further reduce padding */
     }
 
     .logo img {
@@ -113,7 +110,7 @@ hr {
 
 @media (max-width: 400px) {
     .navbar {
-        padding: 8px 5px; /* Minimized padding for very small screens */
+        padding: 6px 5px; /* Minimized padding for very small screens */
     }
 
     .logo img {
