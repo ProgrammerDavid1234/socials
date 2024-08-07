@@ -3,6 +3,8 @@ import './LoginPage.css';
 import logo from '../../Components/Assets/Logo.jpg';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { FaGoogle, FaFacebook, FaApple } from 'react-icons/fa';
+
 
 const LoginPage = () => {
     const navigate = useNavigate(); // Initialize the useNavigate hook
@@ -84,6 +86,14 @@ const LoginPage = () => {
                     <div className="signupButton">
                         <h5>Login</h5>
                     </div>
+                    <div className="divider">
+            <h5>or</h5>
+          </div>
+                    <div className="signupButton">
+            <h5 style={{fontWeight:'400'}}><FaGoogle className='icon' /> Continue with Google</h5>
+            <h5 style={{fontWeight:'400'}}><FaFacebook className='icon' /> Continue with Facebook</h5>
+            <h5 style={{fontWeight:'400'}}><FaApple className='icon' /> Continue with Apple</h5>
+          </div>
                     <div className="rightText1">
                         <p>Already have an account? Log in</p>
                         <p>Forget your user ID or password?</p>
