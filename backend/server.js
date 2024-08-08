@@ -9,12 +9,12 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-    origin: process.env.CORS_ORIGIN
+    origin: process.env.CORS_ORIGIN // Use environment variable for CORS origin
 }));
 app.use(express.json());
 
 // Database connection
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGO_URI, { // Use environment variable for MongoDB URI
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

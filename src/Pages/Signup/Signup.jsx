@@ -21,7 +21,8 @@ const Signup = () => {
 
   const handleSignUp = async () => {
     try {
-      const res = await axios.post('https://socials-kj54teufo-programmerdavid1234s-projects.vercel.app/api/users/register', { email, password });
+      // Revert to the original endpoint
+      const res = await axios.post('http://localhost:5000/api/users/register', { email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/loginpage');
     } catch (err) {

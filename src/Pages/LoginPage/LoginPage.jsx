@@ -10,15 +10,17 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [error, setError] = useState(''); // Added for error handling
+  const [error, setError] = useState(''); // For error handling
 
   const togglePasswordVisibility = () => {
     setShowPassword(prev => !prev);
   };
 
   const handleLogin = async () => {
+    console.log('Login button clicked'); // Debugging
     try {
-      const res = await axios.post('https://socials-kj54teufo-programmerdavid1234s-projects.vercel.app/api/users/login', { email, password });
+      // Revert to the original endpoint
+      const res = await axios.post('http://localhost:5000/api/users/login', { email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/home');
     } catch (err) {
