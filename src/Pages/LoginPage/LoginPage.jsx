@@ -10,22 +10,25 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [error, setError] = useState(''); // For error handling
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // New state for loading
 
   const togglePasswordVisibility = () => {
     setShowPassword(prev => !prev);
   };
 
   const handleLogin = async () => {
-    console.log('Login button clicked'); // Debugging
+    setLoading(true); // Set loading to true when the request starts
+    setError(''); // Reset error message on new attempt
     try {
-      // Revert to the original endpoint
       const res = await axios.post('http://localhost:5000/api/users/login', { email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/home');
     } catch (err) {
       setError('Login failed. Please check your email and password.');
       console.error(err);
+    } finally {
+      setLoading(false); // Set loading to false once the request is complete
     }
   };
 
@@ -69,8 +72,8 @@ const LoginPage = () => {
           </div>
           {error && <p className="error-message">{error}</p>} {/* Display error message */}
           <p>By creating an account, I agree to our Terms of use and Privacy Policy.</p>
-          <div className="signupButton" onClick={handleLogin}>
-            <h5>Login</h5>
+          <div className="signupButton" onClick={handleLogin} style={{ pointerEvents: loading ? 'none' : 'auto', opacity: loading ? 0.6 : 1 }}>
+            <h5>{loading ? 'Loading...' : 'Login'}</h5> {/* Show loading text when loading */}
           </div>
           <div className="divider">
             <h5>or</h5>

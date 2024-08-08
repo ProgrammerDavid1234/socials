@@ -14,19 +14,25 @@ const Signup = () => {
   const [hasUpperCase, setHasUpperCase] = useState(false);
   const [hasNumber, setHasNumber] = useState(false);
   const [hasSymbol, setHasSymbol] = useState(false);
+  const [loading, setLoading] = useState(false); // New state for loading
+  const [error, setError] = useState(''); // For error handling
 
   const togglePasswordVisibility = () => {
     setShowPassword(prevShowPassword => !prevShowPassword);
   };
 
   const handleSignUp = async () => {
+    setLoading(true); // Set loading to true when the request starts
+    setError(''); // Reset error message on new attempt
     try {
-      // Revert to the original endpoint
       const res = await axios.post('http://localhost:5000/api/users/register', { email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/loginpage');
     } catch (err) {
+      setError('Sign up failed. Please try again.');
       console.error(err);
+    } finally {
+      setLoading(false); // Set loading to false once the request is complete
     }
   };
 
@@ -102,9 +108,10 @@ const Signup = () => {
               <input type="checkbox" checked={hasSymbol} readOnly /> Use a symbol (e.g. !@#$)
             </label>
           </div>
-          <div className="signupButton" onClick={handleSignUp}>
-            <h5>Sign up</h5>
+          <div className="signupButton" onClick={handleSignUp} style={{ pointerEvents: loading ? 'none' : 'auto', opacity: loading ? 0.6 : 1 }}>
+            <h5>{loading ? 'Signing up...' : 'Sign up'}</h5> {/* Show loading text when loading */}
           </div>
+          {error && <p className="error-message">{error}</p>} {/* Display error message */}
           <div className="rightText1">
             <p>Already have an account? Log in</p>
             <p>Forget your user ID or password?</p>

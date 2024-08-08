@@ -1,6 +1,7 @@
-import React from 'react'
-import './Navbar.css'
-import logo from '../Assets/Logo.jpg'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
+import logo from '../Assets/Logo.jpg';
 
 const Navbar = () => {
   return (
@@ -10,11 +11,13 @@ const Navbar = () => {
         </div>
         <div className="right">
             <p>English (United States)</p>
-            <h3 style={{fontWeight:'400'}}>Login</h3>
+            <Link to="/loginpage">
+                <h3 style={{fontWeight: '400'}}>Login</h3>
+            </Link>
         </div>
         <hr />
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
