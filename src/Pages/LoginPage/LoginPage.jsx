@@ -10,6 +10,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [error, setError] = useState(''); // Added for error handling
 
   const togglePasswordVisibility = () => {
     setShowPassword(prev => !prev);
@@ -17,10 +18,11 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const res = await axios.post('https://socials-kj54teufo-programmerdavid1234s-projects.vercel.app/api/users/login', { email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/home');
     } catch (err) {
+      setError('Login failed. Please check your email and password.');
       console.error(err);
     }
   };
@@ -63,6 +65,7 @@ const LoginPage = () => {
               {showPassword ? <FaEyeSlash /> : <FaEye />} {showPassword ? 'Hide' : 'Show'}
             </button>
           </div>
+          {error && <p className="error-message">{error}</p>} {/* Display error message */}
           <p>By creating an account, I agree to our Terms of use and Privacy Policy.</p>
           <div className="signupButton" onClick={handleLogin}>
             <h5>Login</h5>

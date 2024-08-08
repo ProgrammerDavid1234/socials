@@ -3,6 +3,7 @@ import './Signup.css';
 import logo from '../../Components/Assets/Logo.jpg';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Signup = () => {
   const navigate = useNavigate(); // Initialize the useNavigate hook
@@ -15,12 +16,17 @@ const Signup = () => {
   const [hasSymbol, setHasSymbol] = useState(false);
 
   const togglePasswordVisibility = () => {
-    setShowPassword(prev => !prev);
+    setShowPassword(prevShowPassword => !prevShowPassword);
   };
 
-  const handleSignUp = () => {
-    // Logic for handling sign-up (e.g., form submission) should go here.
-    navigate('/loginpage'); // Navigate to the login page
+  const handleSignUp = async () => {
+    try {
+      const res = await axios.post('https://socials-kj54teufo-programmerdavid1234s-projects.vercel.app/api/users/register', { email, password });
+      localStorage.setItem('token', res.data.token);
+      navigate('/loginpage');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const validatePassword = (password) => {
@@ -46,7 +52,8 @@ const Signup = () => {
       <div className="container">
         <div className="text">
           <h3>Create an account</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit. Morbi lobortis maximus</p>
+          <p>Lorem ipsum dolor sit amet, consectetur <br />
+            adipiscing elit. Morbi lobortis maximus</p>
         </div>
         <div className="input">
           <div className="input-container">
@@ -60,9 +67,12 @@ const Signup = () => {
             />
             <span className="tooltip">We will use your email as your user ID.</span>
           </div>
+
           <label htmlFor="phone">Phone</label>
           <input type="number" id="phone" name="phone" />
+
           <p>We strongly recommend adding a phone number. This will help verify your account and keep it safe.</p>
+
           <label htmlFor="password">Password</label>
           <div className="password-container">
             <input
@@ -76,18 +86,19 @@ const Signup = () => {
               {showPassword ? <FaEyeSlash /> : <FaEye />} {showPassword ? 'Hide' : 'Show'}
             </button>
           </div>
+
           <div className="requirements">
             <label>
               <input type="checkbox" checked={hasEightChars} readOnly /> Use 8 or more characters
             </label>
             <label>
-              <input type="checkbox" checked={hasUpperCase} readOnly /> Use upper and lower case letters (e.g., Aa)
+              <input type="checkbox" checked={hasUpperCase} readOnly /> Use upper and lower case letters (e.g. Aa)
             </label>
             <label>
-              <input type="checkbox" checked={hasNumber} readOnly /> Use a number (e.g., 1234)
+              <input type="checkbox" checked={hasNumber} readOnly /> Use a number (e.g. 1234)
             </label>
             <label>
-              <input type="checkbox" checked={hasSymbol} readOnly /> Use a symbol (e.g., !@#$)
+              <input type="checkbox" checked={hasSymbol} readOnly /> Use a symbol (e.g. !@#$)
             </label>
           </div>
           <div className="signupButton" onClick={handleSignUp}>
