@@ -15,10 +15,12 @@ const Signup = () => {
   const [hasSymbol, setHasSymbol] = useState(false);
 
   const togglePasswordVisibility = () => {
-    setShowPassword(prevShowPassword => !prevShowPassword);
+    setShowPassword(prev => !prev);
   };
-  const handleSignUpClick = () => {
-    navigate('/loginpage'); // Navigate to the Signup page
+
+  const handleSignUp = () => {
+    // Logic for handling sign-up (e.g., form submission) should go here.
+    navigate('/loginpage'); // Navigate to the login page
   };
 
   const validatePassword = (password) => {
@@ -34,8 +36,8 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
-    <div className="rightText">
-        <p>Already have an account? <span className="login-link" onClick={handleSignUpClick}>Login</span></p>
+      <div className="rightText">
+        <p>Already have an account? <span className="login-link" onClick={() => navigate('/loginpage')}>Login</span></p>
         <p>Forget your user ID or password?</p>
       </div>
       <div className="logo1">
@@ -44,8 +46,7 @@ const Signup = () => {
       <div className="container">
         <div className="text">
           <h3>Create an account</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur <br />
-            adipiscing elit. Morbi lobortis maximus</p>
+          <p>Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit. Morbi lobortis maximus</p>
         </div>
         <div className="input">
           <div className="input-container">
@@ -59,12 +60,9 @@ const Signup = () => {
             />
             <span className="tooltip">We will use your email as your user ID.</span>
           </div>
-
           <label htmlFor="phone">Phone</label>
           <input type="number" id="phone" name="phone" />
-
           <p>We strongly recommend adding a phone number. This will help verify your account and keep it safe.</p>
-
           <label htmlFor="password">Password</label>
           <div className="password-container">
             <input
@@ -78,22 +76,21 @@ const Signup = () => {
               {showPassword ? <FaEyeSlash /> : <FaEye />} {showPassword ? 'Hide' : 'Show'}
             </button>
           </div>
-
           <div className="requirements">
             <label>
               <input type="checkbox" checked={hasEightChars} readOnly /> Use 8 or more characters
             </label>
             <label>
-              <input type="checkbox" checked={hasUpperCase} readOnly /> Use upper and lower case letters (e.g. Aa)
+              <input type="checkbox" checked={hasUpperCase} readOnly /> Use upper and lower case letters (e.g., Aa)
             </label>
             <label>
-              <input type="checkbox" checked={hasNumber} readOnly /> Use a number (e.g. 1234)
+              <input type="checkbox" checked={hasNumber} readOnly /> Use a number (e.g., 1234)
             </label>
             <label>
-              <input type="checkbox" checked={hasSymbol} readOnly /> Use a symbol (e.g. !@#$)
+              <input type="checkbox" checked={hasSymbol} readOnly /> Use a symbol (e.g., !@#$)
             </label>
           </div>
-          <div className="signupButton">
+          <div className="signupButton" onClick={handleSignUp}>
             <h5>Sign up</h5>
           </div>
           <div className="rightText1">
