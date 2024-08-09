@@ -10,25 +10,46 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState(''); // State for username
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // New state for loading
+  const [loading, setLoading] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(prev => !prev);
   };
 
+  const validateForm = () => {
+    if (!email.includes('@')) {
+      setError('Please enter a valid email address.');
+      return false;
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long.');
+      return false;
+    }
+    return true;
+  };
+
   const handleLogin = async () => {
-    setLoading(true); // Set loading to true when the request starts
-    setError(''); // Reset error message on new attempt
+    if (!validateForm()) return;
+    setLoading(true);
+    setError('');
     try {
-      const res = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const res = await axios.post(`${API_URL}/api/users/login`, { email, password, username });
       localStorage.setItem('token', res.data.token);
       navigate('/home');
     } catch (err) {
-      setError('Login failed. Please check your email and password.');
+      if (err.response && err.response.status === 400) {
+        setError('Invalid email or password.');
+      } else if (err.response && err.response.status === 500) {
+        setError('Server error. Please try again later.');
+      } else {
+        setError('Login failed. Please check your email and password.');
+      }
       console.error(err);
     } finally {
-      setLoading(false); // Set loading to false once the request is complete
+      setLoading(false);
     }
   };
 
@@ -46,6 +67,16 @@ const LoginPage = () => {
           <p>Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit. Morbi lobortis maximus</p>
         </div>
         <div className="input">
+          <div className="input-container">
+            <label htmlFor="username">Username</label> {/* Username Field */}
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
           <div className="input-container">
             <label htmlFor="email">Email</label>
             <input
@@ -70,10 +101,10 @@ const LoginPage = () => {
               {showPassword ? <FaEyeSlash /> : <FaEye />} {showPassword ? 'Hide' : 'Show'}
             </button>
           </div>
-          {error && <p className="error-message">{error}</p>} {/* Display error message */}
-          <p>By creating an account, I agree to our Terms of use and Privacy Policy.</p>
+          {error && <p className="error-message" aria-live="assertive">{error}</p>}
+      
           <div className="signupButton" onClick={handleLogin} style={{ pointerEvents: loading ? 'none' : 'auto', opacity: loading ? 0.6 : 1 }}>
-            <h5>{loading ? 'Loading...' : 'Login'}</h5> {/* Show loading text when loading */}
+            <h5>{loading ? 'Loading...' : 'Login'}</h5>
           </div>
           <div className="divider">
             <h5>or</h5>

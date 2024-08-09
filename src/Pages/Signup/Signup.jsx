@@ -6,34 +6,20 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Signup = () => {
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState(''); // New state for username
   const [hasEightChars, setHasEightChars] = useState(false);
   const [hasUpperCase, setHasUpperCase] = useState(false);
   const [hasNumber, setHasNumber] = useState(false);
   const [hasSymbol, setHasSymbol] = useState(false);
-  const [loading, setLoading] = useState(false); // New state for loading
-  const [error, setError] = useState(''); // For error handling
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const togglePasswordVisibility = () => {
     setShowPassword(prevShowPassword => !prevShowPassword);
-  };
-
-  const handleSignUp = async () => {
-    setLoading(true); // Set loading to true when the request starts
-    setError(''); // Reset error message on new attempt
-    try {
-      const res = await axios.post('http://localhost:5000/api/users/register', { email, password });
-      localStorage.setItem('token', res.data.token);
-      navigate('/loginpage');
-    } catch (err) {
-      setError('Sign up failed. Please try again.');
-      console.error(err);
-    } finally {
-      setLoading(false); // Set loading to false once the request is complete
-    }
   };
 
   const validatePassword = (password) => {
@@ -41,6 +27,38 @@ const Signup = () => {
     setHasUpperCase(/[A-Z]/.test(password));
     setHasNumber(/\d/.test(password));
     setHasSymbol(/[!@#$%^&*(),.?":{}|<>]/.test(password));
+  };
+
+  const validateForm = () => {
+    if (username.trim() === '') {
+      setError('Username is required.');
+      return false;
+    }
+    if (!email.includes('@')) {
+      setError('Please enter a valid email address.');
+      return false;
+    }
+    if (password.length < 8 || !hasUpperCase || !hasNumber || !hasSymbol) {
+      setError('Please ensure your password meets all requirements.');
+      return false;
+    }
+    return true;
+  };
+
+  const handleSignUp = async () => {
+    if (!validateForm()) return;
+    setLoading(true);
+    setError('');
+    try {
+      const res = await axios.post('http://localhost:5000/api/users/register', { email, password, username });
+      localStorage.setItem('token', res.data.token);
+      navigate('/loginpage');
+    } catch (err) {
+      setError('Sign up failed. Please try again.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -63,6 +81,16 @@ const Signup = () => {
             adipiscing elit. Morbi lobortis maximus</p>
         </div>
         <div className="input">
+          <div className="input-container">
+            <label htmlFor="username">Username</label> {/* New Username Field */}
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
           <div className="input-container">
             <label htmlFor="email">Email</label>
             <input
@@ -109,9 +137,9 @@ const Signup = () => {
             </label>
           </div>
           <div className="signupButton" onClick={handleSignUp} style={{ pointerEvents: loading ? 'none' : 'auto', opacity: loading ? 0.6 : 1 }}>
-            <h5>{loading ? 'Signing up...' : 'Sign up'}</h5> {/* Show loading text when loading */}
+            <h5>{loading ? 'Signing up...' : 'Sign up'}</h5>
           </div>
-          {error && <p className="error-message">{error}</p>} {/* Display error message */}
+          {error && <p className="error-message">{error}</p>}
           <div className="rightText1">
             <p>Already have an account? Log in</p>
             <p>Forget your user ID or password?</p>

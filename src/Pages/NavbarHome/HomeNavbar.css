@@ -1,0 +1,71 @@
+html, body {
+    height: 100%; /* Ensure full height for html and body */
+    margin: 0; /* Remove default margin */
+    /* overflow: hidden; Hide overflow to prevent scrollbars */
+}
+
+.general {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh; /* Ensure the container takes full viewport height */
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.inputField, .imgSpace {
+    flex: 1; /* Allow both sections to take equal space */
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.LoginImg {
+    width: 100%;
+    height: auto; /* Adjust height automatically to maintain aspect ratio */
+    max-height: 100%; /* Ensure image does not exceed container height */
+}
+
+.sidebar {
+    width: 20%; /* Sidebar width */
+    background-color: grey; /* Sidebar background color */
+    padding: 20px; /* Padding inside the sidebar */
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Add gaps between elements */
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.edit-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.username-input,
+.bio-input {
+    width: 100%; /* Make input fields take full width */
+    padding: 5px;
+    margin-top: 10px; /* Add some space above inputs */
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+h3, p {
+    margin-top: 10px; /* Space above text */
+    text-align: center; /* Center align the text */
+    cursor: pointer; /* Indicate clickable text */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}

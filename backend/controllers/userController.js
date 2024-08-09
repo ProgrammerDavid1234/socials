@@ -1,10 +1,9 @@
-// backend/controllers/userController.js
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.registerUser = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, username } = req.body;
 
     try {
         let user = await User.findOne({ email });
@@ -14,7 +13,8 @@ exports.registerUser = async (req, res) => {
 
         user = new User({
             email,
-            password
+            password,
+            username
         });
 
         const salt = await bcrypt.genSalt(10);
@@ -24,11 +24,12 @@ exports.registerUser = async (req, res) => {
 
         const payload = {
             user: {
-                id: user.id
+                id: user.id,
+                username: user.username
             }
         };
 
-        jwt.sign(payload, 'your-jwt-secret', { expiresIn: 360000 }, (err, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 360000 }, (err, token) => {
             if (err) throw err;
             res.json({ token });
         });
@@ -55,11 +56,12 @@ exports.loginUser = async (req, res) => {
 
         const payload = {
             user: {
-                id: user.id
+                id: user.id,
+                username: user.username
             }
         };
 
-        jwt.sign(payload, 'your-jwt-secret', { expiresIn: 360000 }, (err, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 360000 }, (err, token) => {
             if (err) throw err;
             res.json({ token });
         });

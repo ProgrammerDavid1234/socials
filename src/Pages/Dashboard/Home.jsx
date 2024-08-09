@@ -1,10 +1,10 @@
 // src/pages/Home/Home.jsx
 import React from 'react';
-
+import HomeNavbar from '../NavbarHome/HomeNavbar'
 const Home = () => {
     return (
         <div>
-            <h1>Welcome to the Dashboard</h1>
+            <HomeNavbar />
         </div>
     );
 };
