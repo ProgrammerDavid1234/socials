@@ -1,13 +1,21 @@
-// src/pages/Home/Home.jsx
-import React from 'react';
-import HomeNavbar from '../NavbarHome/HomeNavbar'
+import React, { useEffect, useState } from 'react';
+
 const Home = () => {
-    return (
-        <div>
-            <HomeNavbar />
-        </div>
-    );
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('email');
+    if (storedEmail) {
+      setEmail(storedEmail);
+    }
+  }, []);
+
+  return (
+    <div>
+      <h1>Hello, {email}</h1>
+      <p>Welcome back to your dashboard!</p>
+    </div>
+  );
 };
 
 export default Home;
-// 7km3nHSz9oLZqEeb

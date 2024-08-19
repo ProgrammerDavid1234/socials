@@ -1,14 +1,40 @@
 const express = require('express');
 const router = express.Router();
-const { loginUser, registerUser } = require('../controllers/userController'); // Import the correct controller
+const auth = require('../middleware/auth'); // Middleware for authentication
+const { loginUser, registerUser } = require('../controllers/userController'); // User controllers
+const User = require('../models/User'); // User model
 
-// POST /api/users/login
+// @route   GET /users/me
+// @desc    Get current user's data
+// @access  Private
+// routes/api/users.js
+router.get('/me', auth, async (req, res) => {
+  try {
+    const user = req.user;
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: 'Server error' });
+  }
+});
+
+
+// @route   POST /users/login
+// @desc    Login user and return token
+// @access  Public
 router.post('/login', loginUser);
 
-// POST /api/users/register
-router.post('/register', registerUser); // Use the registerUser function here
+// @route   POST /users/register
+// @desc    Register a new user
+// @access  Public
+router.post('/register', registerUser);
 
-// Get user by ID
+// @route   GET /users/:userId
+// @desc    Get user by ID
+// @access  Public
 router.get('/:userId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
@@ -19,8 +45,10 @@ router.get('/:userId', async (req, res) => {
   }
 });
 
-// Update user by ID
-router.put('/:userId', async (req, res) => {
+// @route   PUT /users/:userId
+// @desc    Update user by ID
+// @access  Private
+router.put('/:userId', auth, async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true });
     if (!user) return res.status(404).json({ message: 'User not found' });
