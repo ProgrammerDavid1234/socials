@@ -1,0 +1,78 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif; /* Consistent font */
+    background-color: #f0f2f5; /* Light background color */
+}
+
+.general {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Main content area styling */
+.content {
+    flex: 1; /* Take up the remaining space */
+    padding: 40px;
+    background-color: white; /* White background for content area */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center-align text */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow to separate navbar and content */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.content h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px; /* Space between heading and paragraph */
+}
+
+.content p {
+    font-size: 18px;
+    color: #555; /* Softer text color */
+}
+
+/* Ensure responsiveness */
+@media screen and (max-width: 800px) {
+    .general {
+        flex-direction: column; /* Stack navbar and content vertically on smaller screens */
+    }
+
+    .content {
+        padding: 20px;
+        text-align: left; /* Align text to the left for better readability on mobile */
+    }
+
+    .content h1 {
+        font-size: 28px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+}
+
+/* Scrollbar customization for content overflow */
+.content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-track {
+    background-color: #f0f2f5;
+}

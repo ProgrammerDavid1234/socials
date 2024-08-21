@@ -38,7 +38,7 @@ const LoginPage = () => {
       const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
       const res = await axios.post(`${API_URL}/api/users/login`, { email, password, username });
       localStorage.setItem('token', res.data.token);
-      localStorage.setItem('email', email); // Store email in localStorage
+      localStorage.setItem('username', username); // Store username in localStorage
       navigate('/home');
     } catch (err) {
       if (err.response && err.response.status === 400) {
@@ -53,7 +53,7 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
-  
+
   return (
     <div className="login-container">
       <div className="rightText">
